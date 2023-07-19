@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="border-slate-500 p-5">
+        <h1 class="text-4xl font-bold mb-4">TodoList</h1>
+    <form action="/create" method="POST" class="mb-4">
+        <input type="text" name="todo" placeholder="Enter a todo" class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500 " autocomplete="off">
+        <button type="submit" class="px-4 py-2 bg-green-500 text-white font-bold rounded-lg cursor-pointer">Add</button>
+    </form>
+    <ul class="list-none p-0">
+        {% for todo in todos %}
+        <li class="mb-2 flex items-center">
+            <form action="/update/{{ todo._id }}" method="POST" class="flex">
+                <input type="text" name="todo" value="{{ todo.todo }}" placeholder="Enter a task" class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                <button type="submit" class="px-4 py-2 bg-green-500 text-white font-bold rounded-lg cursor-pointer ml-2">Update</button>
+            </form>
+            <form action="/delete/{{ todo._id }}" method="POST">
+                <button type="submit" class="px-4 py-2 bg-red-500 text-white font-bold rounded-lg cursor-pointer ml-2">Delete</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    </div>
+</body>
+</html>

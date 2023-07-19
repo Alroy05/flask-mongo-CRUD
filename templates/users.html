@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Function to toggle password visibility
+        function togglePasswordVisibility(inputId, buttonId) {
+            const input = document.getElementById(inputId);
+            const button = document.getElementById(buttonId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                button.textContent = 'Hide';
+            } else {
+                input.type = 'password';
+                button.textContent = 'Show';
+            }
+        }
+    </script>
+</head>
+<!-- <body>
+    <div class="container border-slate-500 p-5">
+        <h1 class="text-4xl font-bold mb-4">User Registration</h1>
+        <hr>
+        <form action="/create" method="POST" class="mb-4 border-slate-500 mt-4">
+            <input type="text" name="username" placeholder="Enter username" class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" autocomplete="off">
+            <input type="email" name="email" placeholder="Enter email" class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" autocomplete="off">
+            <input type="password" name="password" placeholder="Enter password" class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" autocomplete="off">
+            <button type="submit" class="px-4 py-2 bg-green-500 text-white font-bold rounded-lg cursor-pointer">Register</button>
+        </form>
+        <hr>
+        <ul class="list-none p-2 mt-2">
+            {% for user in users %}
+            <li class="mb-2 flex items-center">
+                <form action="/update/{{ user._id }}" method="POST" class="flex">
+                    <input type="text" name="username" value="{{ user.username }}" placeholder="Enter username" class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500 mr-2">
+                    <input type="email" name="email" value="{{ user.email }}" placeholder="Enter email" class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500 mr-2">
+                    <input type="password" name="password" value="{{ user.password }}" id="password-{{ user._id }}" placeholder="Enter password" class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500 mr-2">
+                    <button type="button" onclick="togglePasswordVisibility('password-{{ user._id }}', 'toggle-{{ user._id }}')" class="px-4 py-2 bg-blue-500 text-white font-bold rounded-lg cursor-pointer ml-2" id="toggle-{{ user._id }}">Show Password</button>
+                    <script>
+                        // Hide the password field initially
+                        document.getElementById('password-{{ user._id }}').type = 'password';
+                    </script>
+                    <button type="submit" class="px-4 py-2 bg-blue-500 text-white font-bold rounded-lg cursor-pointer ml-2">Update</button>
+                </form>
+                <form action="/delete/{{ user._id }}" method="POST">
+                    <button type="submit" class="px-4 py-2 bg-red-500 text-white font-bold rounded-lg cursor-pointer ml-2">Delete</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body> -->
+<body> 
+    <div class="container border-slate-500 p-5"> 
+        <h1 class="text-4xl font-bold mb-4">User Registration</h1> 
+        <hr> 
+        <form action="/create" method="POST" class="mb-4 border border-gray-300 rounded-lg p-4"> 
+            <input type="text" name="username" placeholder="Enter username" class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500 mb-2" autocomplete="off"> 
+            <input type="email" name="email" placeholder="Enter email" class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500 mb-2" autocomplete="off"> 
+            <input type="password" name="password" placeholder="Enter password" class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500 mb-4" autocomplete="off"> 
+            <button type="submit" class="px-4 py-2 bg-green-500 text-white font-bold rounded-lg cursor-pointer">Register</button> 
+        </form> 
+        <ul class="list-none p-2 mt-2 border text-center border-gray-300 rounded-lg p-4"> 
+            {% for user in users %} 
+            <li class="mb-2 flex items-center border border-gray-300 rounded-lg p-4"> 
+                <form action="/update/{{ user._id }}" method="POST" class="flex"> 
+                    <input type="text" name="username" value="{{ user.username }}" placeholder="Enter username" class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500 mr-2"> 
+                    <input type="email" name="email" value="{{ user.email }}" placeholder="Enter email" class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500 mr-2"> 
+                    <input type="password" name="password" value="{{ user.password }}" id="password-{{ user._id }}" placeholder="Enter password" class="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500 mr-2"> 
+                    <button type="button" onclick="togglePasswordVisibility('password-{{ user._id }}', 'toggle-{{ user._id }}')" class="px-4 py-2 bg-gradient-to-r from-blue-400 to-blue-600 text-white font-bold rounded-lg cursor-pointer ml-2" id="toggle-{{ user._id }}">Show Password</button> 
+                    <script> 
+                        // Hide the password field initially 
+                        document.getElementById('password-{{ user._id }}').type = 'password'; 
+                    </script> 
+                    <button type="submit" class="px-4 py-2 bg-gradient-to-r from-blue-400 to-blue-600 text-white font-bold rounded-lg cursor-pointer ml-2">Update</button> 
+                </form> 
+                <form action="/delete/{{ user._id }}" method="POST"> 
+                    <button type="submit" class="px-4 py-2 bg-gradient-to-r from-red-400 to-red-600 text-white font-bold rounded-lg cursor-pointer ml-2">Delete</button> 
+                </form> 
+            </li> 
+            {% endfor %} 
+        </ul> 
+    </div> 
+</body>
+</html>

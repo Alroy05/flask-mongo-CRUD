@@ -1,0 +1,35 @@
+/* style.css */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom styles */
+
+body {
+    @apply bg-gray-100 text-gray-800 font-sans;
+}
+
+h1 {
+    @apply text-4xl font-bold mb-4;
+}
+
+form {
+    @apply mb-4;
+}
+
+input[type="text"] {
+    @apply px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500;
+}
+
+button {
+    @apply px-4 py-2 bg-green-500 text-white font-bold rounded-lg cursor-pointer;
+}
+
+ul {
+    @apply list-none p-0;
+}
+
+li {
+    @apply mb-2;
+}

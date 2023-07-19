@@ -1,0 +1,6 @@
+flask
+pymongo
+bson
+gunicorn
+certifi
+python-dotenv
